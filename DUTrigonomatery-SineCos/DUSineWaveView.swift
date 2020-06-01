@@ -36,16 +36,21 @@ class DUSineWaveView: UIView {
     var delegate: DUSineWaveViewDelegate?
     var maxGraphLegth: CGFloat = 100.0
     var maxGraphHeight: CGFloat = 10.0
-    var isCosWave = false
+    var function = Function.sin
+   // var isCosWave = false
+    
+    enum Function: Int {
+        case sin = 0
+        case cos = 1
+        case tan = 2
+        case cot = 3
+        case sec = 4
+        case cosec = 5
+    }
     
     //MARK: - Lifecycle methods
     
     override func draw(_ rect: CGRect) {
-        if isFirstTime {
-            isFirstTime = false
-            addAmplitudeLabels(rect: rect)
-            addLFrequencyLabels(rect: rect)
-        }
         addSineWaveIn(rect: rect)
         addCentreLineAtYposition(rect: rect)
         setFunctioality()
@@ -57,6 +62,11 @@ class DUSineWaveView: UIView {
         if selectedPoint != nil {
             drawRectAroundPoint(point: CGPoint.init(x: selectedPoint!.rectX, y: selectedPoint!.rectY))
             //  drawRectAroundPoint(point: CGPoint.init(x: 100, y: 100))
+        }
+        if isFirstTime {
+            isFirstTime = false
+            addAmplitudeLabels(rect: rect)
+            addLFrequencyLabels(rect: rect)
         }
     }
     
@@ -101,10 +111,25 @@ class DUSineWaveView: UIView {
                     let x = CGFloat(degree/(180 * frequency)) * width
                     var y_plot: Double = 0.0
                     let Ø = (degree/180.0 * Double.pi)
-                    if isCosWave {
-                        y_plot = cos(Ø)
-                    } else {
+                    switch function {
+                    case .sin:
                         y_plot = sin(Ø)
+                        break
+                    case .cos:
+                        y_plot = cos(Ø)
+                        break
+                    case .tan:
+                        y_plot = sin(Ø) / cos(Ø)
+                        break
+                    case .cot:
+                        y_plot = cos(Ø) / sin(Ø)
+                        break
+                    case .sec:
+                        y_plot = 1 / cos(Ø)
+                        break
+                    case .cosec:
+                        y_plot = 1 / sin(Ø)
+                        break
                     }
                     let y = origin.y - CGFloat(y_plot) * height * CGFloat(amplitude)
                     sineWavePath.addLine(to: CGPoint(x: x, y: y))

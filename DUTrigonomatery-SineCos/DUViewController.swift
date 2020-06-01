@@ -26,8 +26,6 @@ class DUViewController: UIViewController, DUSineWaveViewDelegate {
     @IBOutlet weak var btnBlueDot: UIButton!
     @IBOutlet weak var btnRedDot: UIButton!
     @IBOutlet weak var sliderDistanceOfPoints: UISlider!
-    @IBOutlet weak var btnCosineWave: UIButton!
-    @IBOutlet weak var btnSineWave: UIButton!
     
     //MARK: - Properties
     
@@ -170,24 +168,29 @@ class DUViewController: UIViewController, DUSineWaveViewDelegate {
         viewUnitCircle.isHidden = false
     }
     
-    @IBAction func btnSineWaveClicked(_ sender: UIButton) {
-        sender.setTitleColor(UIColor.black, for: .normal)
-        sender.backgroundColor = UIColor.white
-        btnCosineWave.setTitleColor(UIColor.white, for: .normal)
-        btnCosineWave.backgroundColor = UIColor.black
-        viewSineWave.isCosWave = false
-        viewSineWave.isPointSelection = false
-        infoView.isHidden = true
-        textView.text = "Select any point from graph"
-        changeSineWave()
-    }
-    
-    @IBAction func btnCosineWaveClicked(_ sender: UIButton) {
-        sender.setTitleColor(UIColor.black, for: .normal)
-        sender.backgroundColor = UIColor.white
-        btnSineWave.setTitleColor(UIColor.white, for: .normal)
-        btnSineWave.backgroundColor = UIColor.black
-        viewSineWave.isCosWave = true
+    @IBAction func waveTypeValueChange(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            viewSineWave.function = .sin
+            break
+        case 1:
+            viewSineWave.function = .cos
+            break
+        case 2:
+            viewSineWave.function = .tan
+            break
+        case 3:
+            viewSineWave.function = .cot
+            break
+        case 4:
+            viewSineWave.function = .sec
+            break
+        case 5:
+            viewSineWave.function = .cosec
+            break
+        default:
+            break
+        }
         viewSineWave.isPointSelection = false
         infoView.isHidden = true
         textView.text = "Select any point from graph"
@@ -201,14 +204,6 @@ class DUViewController: UIViewController, DUSineWaveViewDelegate {
         btnRedDot.layer.borderColor = UIColor.clear.cgColor
         btnBlueDot.layer.borderWidth = 3
         btnRedDot.layer.borderWidth = 3
-        btnSineWave.setTitleColor(UIColor.black, for: .normal)
-        btnSineWave.backgroundColor = UIColor.white
-        btnCosineWave.setTitleColor(UIColor.white, for: .normal)
-        btnCosineWave.backgroundColor = UIColor.black
-        btnSineWave.layer.borderWidth = 1
-        btnCosineWave.layer.borderWidth = 1
-        btnSineWave.layer.borderColor = UIColor.black.cgColor
-        btnCosineWave.layer.borderColor = UIColor.black.cgColor
         infoView.isHidden = true
         viewUnitCircle.isHidden = true
         textView.font = UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad ? UIFont.systemFont(ofSize: 24) : UIFont.systemFont(ofSize: 17)
