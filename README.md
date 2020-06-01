@@ -15,7 +15,7 @@ Look at the waves, adjust amplitude, freaquency, select the point on the wave an
 
 ![Simalator2](https://github.com/Dhaval1094/DUTrigonomatery-SineCos/blob/master/Images/ezgif.com-video-to-gif%20(3).gif)
 
-![Simalator3](https://github.com/Dhaval1094/DUTrigonomatery-SineCos/blob/master/Images/ezgif.com-video-to-gif%20copy%202.gif)
+![Simalator3](https://github.com/Dhaval1094/DUTrigonomatery-SineCos/blob/master/Images/ezgif.com-video-to-gif%20copy%202.gif , https://github.com/Dhaval1094/DUTrigonomatery-SineCos/blob/master/Images/Screenshot%202020-05-30%20at%204.12.21%20PM.png)
 
 Get the detailed description of how trigonometry is working with the below Mediam Plage links. 
 Description is in two parts.
